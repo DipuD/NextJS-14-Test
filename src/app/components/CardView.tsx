@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 const CardView: React.FC<{ data: any[], addToCart: (product: any) => void }> = ({ data, addToCart }) => {

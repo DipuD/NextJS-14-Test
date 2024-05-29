@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 const ShowCart: React.FC<{ cart: any[], removeFromCart: (index: number) => void }> = ({ cart, removeFromCart }) => {

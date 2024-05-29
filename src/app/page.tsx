@@ -1,7 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
 
-import LandscapeView  from './components/LandscapeView'
-import CardView  from './components/CardView'
-import { useState } from 'react';
 import GetProduct from './components/GetProduct';
 
 export default function Home() {
