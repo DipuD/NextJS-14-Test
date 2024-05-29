@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 
 import GetProduct from './components/GetProduct';
 
