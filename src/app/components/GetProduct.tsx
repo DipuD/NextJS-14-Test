@@ -8,10 +8,16 @@ import ShowCart from "./ShowCart";
 export default function GetProduct() {
   const { data, loading, error } = useFetchProducts();
   const [isCardView, setIsCardView] = useState(true);
-  const [cart, setCart] = useState<any[]>(() => {
+  const [cart, setCart] = useState<any[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
     const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+    setIsInitialized(true);
+  }, []);
 
   const removeFromCart = (index: number) => {
     const updatedCart = [...cart];
@@ -21,8 +27,10 @@ export default function GetProduct() {
   };
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    if (isInitialized) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, isInitialized]);
 
   if (loading) {
     return (
