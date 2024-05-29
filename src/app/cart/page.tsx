@@ -1,21 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShowCart from "../components/ShowCart";
+import CardView from "../components/CardView";
+import LandscapeView from "../components/LandscapeView";
+import useFetchProducts from "../components/useFetchProducts";
 
 export default function Home() {
   
-  const [cart, setCart] = useState<any[]>(() => {
+  const [cart, setCart] = useState<any[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
     const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+    setIsInitialized(true);
+  }, []);
 
   const removeFromCart = (index: number) => {
     const updatedCart = [...cart];
     updatedCart.splice(index, 1);
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart)); 
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); 
   };
+
+  useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, isInitialized]);
 
     return (
       <div className="flex justify-center items-center py-16">
