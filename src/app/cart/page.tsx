@@ -1,7 +1,6 @@
-'use client'
+"use client";
 import { useState } from "react";
 import ShowCart from "../components/ShowCart";
-import useFetchProducts from "../components/useFetchProducts";
 
 export default function Home() {
   
@@ -14,7 +13,7 @@ export default function Home() {
     const updatedCart = [...cart];
     updatedCart.splice(index, 1);
     setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart)); 
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); 
   };
 
     return (
@@ -30,7 +29,7 @@ export default function Home() {
             </div>
             <div className="flex items-center px-2 py-10">
               <input id="default-checkbox" type="checkbox" value="" className="w-4 h-4 bg-gray-800 border-black" />
-              <label className="ms-2 text-sm font-medium text-black px-5 pl-10">I've read and agree to the terms & conditions, refund policy & privacy policy.</label>
+              <label className="ms-2 text-sm font-medium text-black px-5 pl-10">I&apos;ve read and agree to the terms & conditions&lsquo; refund policy & privacy policy.</label>
             </div>
             <div className="flex justify-center items-center py-4">
               <button
